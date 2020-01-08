@@ -1,0 +1,117 @@
+.card {
+	position: relative;
+	color: #f9f9f9;
+	font-weight: 500;
+	width: 50%;
+	min-height: 160px;
+	background: rgba(187, 187, 187, 0.25);
+	margin: 0 20px;
+	padding: 10px 20px 40px;
+	border-radius: 2px;
+	box-shadow: 0 4px 20px -4px rgba(0,0,0,0.2);
+	transition: background ease-in-out .15s;
+}
+
+.card.card--empty {
+	min-width: 120px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.card.card--empty:hover {
+	cursor: pointer;
+	background: rgba(187, 187, 187, 0.35);
+	box-shadow: 0 4px 20px 0px rgba(0,0,0,0.2);
+}
+
+.card__add {
+	letter-spacing: 0.03em;
+}
+
+/* Fighter Card */
+.fighter__image {
+	/* display: none; */
+	position: absolute;
+	max-width: 400px;
+	bottom: 0;
+}
+
+.fighter__image--left {
+	left: 0;
+}
+
+.fighter__image--right {
+	right: 0;
+}
+
+.card__name {
+	font-size: 28px;
+	text-align: center;
+	margin: 0;
+}
+
+.card__total {
+	font-size: 14px;
+	font-weight: 500;
+	margin: 0;
+	text-align: center;
+}
+
+.card__record {
+	color: #e2e2e2;
+	font-size: 12px;
+	font-weight: 400;
+	width: 100%;
+	margin: 15px 0;
+	overflow: hidden;
+	text-align: center;
+}
+
+.card__record div {
+	width: 33%;
+	float: left;
+}
+
+.card__record-stat {
+	font-size: 30px;
+	font-weight: 500;
+	color: #f9f9f9;
+}
+
+.card__stats {
+	width: 100%;
+	font-weight: 400;
+	text-align: center;
+	overflow: hidden;
+	margin: 20px 0 40px;
+}
+
+.card__stats > div {
+	width: 50%;
+	float: left;
+}
+
+.card__accuracy {
+	font-size: 34px;
+	font-weight: 500;
+}
+
+.card__table {
+	padding-top: 3px;
+	border-top: 1px solid #e2e2e238;
+	width: 100%;
+	margin: 10px 0;
+	font-size: 16px;
+	text-align: center;
+}
+
+.card__table th, .card__table td {
+	width: 33%;
+}
+
+.card__table-header {
+	color: #e2e2e2;
+	font-size: 14px;
+	font-weight: 400;
+}
