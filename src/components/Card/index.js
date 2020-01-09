@@ -24,6 +24,7 @@ class Card extends Component {
 				<Fragment>
 					<img src={this.props.fighter.image} alt={this.props.fighter.name} className={`fighter__image fighter__image--${this.props.position}`}></img>
 					<div className="card">
+						<button className="card__edit" onClick={this.onSelectFighter}>Switch</button>
 						<h2 className="card__name">{this.props.fighter.name}</h2>
 						<p className="card__total">{this.props.fighter.total}</p>
 						<div className="card__record">

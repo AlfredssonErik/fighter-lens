@@ -1,0 +1,56 @@
+.ufc-form {
+	position: relative;
+}
+
+.ufc-form__save {
+	display: block;
+	width: 120px;
+	color: white;
+	font-size: 17px;
+	font-weight: 500;
+	text-transform: uppercase;
+	border-radius: 2px;
+	background-color: #935d8c;
+	box-shadow: 0 4px 20px 0px rgba(0,0,0,0.2);
+	border: 0;
+	margin: 40px auto;
+	padding: 10px;
+}
+
+.ufc-form__save:hover {
+	cursor: pointer;
+	background-color: #82517b;
+}
+
+.ufc-form__save:disabled {
+	color: #ffffff73;
+	background: rgba(170, 170, 170, 0.8);
+	box-shadow: none;
+}
+
+.ufc-form__fighter {
+	position: relative;	
+}
+
+.ufc-form__fighter-label {
+	display: block;
+	font-size: 17px;
+	font-weight: 500;
+	margin-bottom: 2px;
+	padding: 20px;
+	background-color: #dadada;
+}
+
+.ufc-form__fighter-label:hover {
+	cursor: pointer;
+	background-color: #dfdfdf;
+}
+
+.ufc-form__fighter input[type="radio"] {
+	position: absolute;
+	opacity: 0;
+}
+
+.ufc-form__fighter input[type="radio"]:checked ~ .ufc-form__fighter-label {
+	background-color: #93c59d;
+}

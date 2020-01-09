@@ -12,6 +12,23 @@
 	transition: background ease-in-out .15s;
 }
 
+.card__edit {
+	position: absolute;
+	top: 0;
+	right: 0;
+	color: #f9f9f9;
+	font-weight: 500;
+	background: transparent;
+	border: none;
+	border-radius: 2px;
+	padding: 10px;
+}
+
+.card__edit:hover {
+	cursor: pointer;
+	background: rgba(187, 187, 187, 0.35);
+}
+
 .card.card--empty {
 	min-width: 120px;
 	display: flex;

@@ -28,7 +28,6 @@ class App extends Component {
 				fighter2: fighterData
 			});
 		}
-		
 		this.toggleModal();
 	}
 
@@ -47,8 +46,8 @@ class App extends Component {
 					<Card onSelect={this.toggleModal} fighter={this.state.fighter1} position={1} />
 					<Card onSelect={this.toggleModal} fighter={this.state.fighter2} position={2} />
 				</div>
-				<Modal onSave={this.handleSave} onClose={this.toggleModal} show={this.state.modalShow} activePosition={this.state.activePosition}>
-					<UFC />
+				<Modal onClose={this.toggleModal} show={this.state.modalShow} >
+					<UFC onSave={this.handleSave} activePosition={this.state.activePosition} />
 				</Modal>
 			</div>
 		);
