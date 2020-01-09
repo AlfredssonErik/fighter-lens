@@ -1,47 +1,34 @@
 import React, { Component, Fragment } from 'react';
 import './Card.css';
 
-const INITIAL_STATE = {
-	position: null,
-	fighter: null
-};
 
 class Card extends Component {
 	constructor(props) {
 		super(props);
-		this.state = { ...INITIAL_STATE }
-		this.add = this.add.bind(this);
+		this.onSelectFighter = this.onSelectFighter.bind(this);
 	}
 
-	componentDidMount() {
-		console.log('Mounted');
-	}
-
-	add() {
-		const { fighter, position } = this.props;
-		this.setState({
-			position: position,
-			fighter: fighter
-		});
+	onSelectFighter() {
+		this.props.onSelect && this.props.onSelect(this.props.position);
 	}
 
 	render() {
-		if (this.state.fighter === null) {
+		if (this.props.fighter === null || this.props.fighter === undefined) {
 			return (
-				<div className="card card--empty" onClick={this.add}>
-					<span className="card__add">Pick a fighter</span>
+				<div className="card card--empty" onClick={this.onSelectFighter}>
+					<span className="card__add">Pick your data</span>
 				</div>
 			);
 		} else {
 			return (
 				<Fragment>
-					<img src={this.state.fighter.image} alt={this.state.fighter.name} className={`fighter__image fighter__image--${this.state.position}`}></img>
+					<img src={this.props.fighter.image} alt={this.props.fighter.name} className={`fighter__image fighter__image--${this.props.position}`}></img>
 					<div className="card">
-						<h2 className="card__name">{this.state.fighter.name}</h2>
-						<p className="card__total">{this.state.fighter.total}</p>
+						<h2 className="card__name">{this.props.fighter.name}</h2>
+						<p className="card__total">{this.props.fighter.total}</p>
 						<div className="card__record">
 							{
-								this.state.fighter.record.map((item, index) => 
+								this.props.fighter.record.map((item, index) => 
 								<div key={index}>
 									<span className="card__record-stat">{item.figure}</span><br />
 									<span>{item.text}</span>
@@ -51,7 +38,7 @@ class Card extends Component {
 						</div>
 						<div className="card__stats">
 						{
-							this.state.fighter.stats.map((item, index) => 
+							this.props.fighter.stats.map((item, index) => 
 							<div key={index}>
 								<span className="card__accuracy">{item.figure}</span><br />
 								<span>{item.text}</span>
@@ -69,9 +56,9 @@ class Card extends Component {
 							</thead>
 							<tbody>
 							<tr>
-								<td>{this.state.fighter.age}</td>
-								<td>{this.state.fighter.height}</td>
-								<td>{this.state.fighter.weight}</td>
+								<td>{this.props.fighter.age}</td>
+								<td>{this.props.fighter.height}</td>
+								<td>{this.props.fighter.weight}</td>
 							</tr>
 							</tbody>
 						</table>
@@ -85,9 +72,9 @@ class Card extends Component {
 							</thead>
 							<tbody>
 							<tr>
-								<td>{this.state.fighter.debut}</td>
-								<td>{this.state.fighter.reach}</td>
-								<td>{this.state.fighter.legReach}</td>
+								<td>{this.props.fighter.debut}</td>
+								<td>{this.props.fighter.reach}</td>
+								<td>{this.props.fighter.legReach}</td>
 							</tr>
 							</tbody>
 						</table>

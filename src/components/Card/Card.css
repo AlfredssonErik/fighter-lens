@@ -31,17 +31,17 @@
 
 /* Fighter Card */
 .fighter__image {
-	/* display: none; */
+	display: none;
 	position: absolute;
 	max-width: 400px;
 	bottom: 0;
 }
 
-.fighter__image--left {
+.fighter__image--1 {
 	left: 0;
 }
 
-.fighter__image--right {
+.fighter__image--2 {
 	right: 0;
 }
 
