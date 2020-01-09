@@ -20,7 +20,6 @@ class Modal extends Component {
 				<div className="modal__overlay" onClick={this.onClose}></div>
 				<div className="modal__modal">
 					<div className="modal__content">
-						<h2 className="modal__title">Take your pick</h2>
 						{this.props.children}
 					</div>
 				</div>

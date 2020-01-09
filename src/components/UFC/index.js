@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import './UFC.css';
 import fighterImage1 from './alexander-gustafsson.png';
 import fighterImage2 from './jon-jones.png';
@@ -74,64 +74,51 @@ const jon = {
 		}
 	]
 }
+
+const Fighters = (props) => {
+	return (
+		<Fragment>
+			<h2 className="modal__title">Pick a fighter</h2>
+			<div className="picker">
+				{props.fighters && props.fighters.map(item => 
+					<div key={item.id} className="picker__item">
+						<div className="picker__content" onClick={props.handleFighterPick.bind(null, item.id)}>
+							<span>{item.name}</span>
+						</div>
+					</div>
+				)}
+			</div>
+		</Fragment>
+	);
+};
+
 class UFC extends Component {
 	constructor(props) {
 		super(props);
-		this.state = {
-			selectedOption: undefined
-		};
-
-		this.onSave = this.onSave.bind(this);
-		this.handleFormSubmit = this.handleFormSubmit.bind(this);
-		this.handleOptionChange = this.handleOptionChange.bind(this);
+		this.fighters = [{id: 1,name: 'Alexander Gustafsson'},{id: 2,name: 'Jon Jones'}];
+		this.handleFighterPick = this.handleFighterPick.bind(this);
 	}
-
-	handleFormSubmit(e) {
-		e.preventDefault();
-		this.onSave();
-	}
-
-	handleOptionChange(changeEvent) {
-		this.setState({
-			selectedOption: changeEvent.target.value
-		});
-	}
-
-	onSave() {
+	handleFighterPick(fighter) {
 		let fighterData;
-		switch (this.state.selectedOption) {
-			case 'alex':
+		switch (fighter) {
+			case 1:
 				fighterData = alex;
 				break;
-			case 'jon':
+			case 2:
 				fighterData = jon;
 				break;
 			default:
 				break;
 		}
 		fighterData.position = this.props.activePosition;
-		this.props.onSave && this.props.onSave(fighterData);
+		this.props.onSave(fighterData);
 	}
 
 	render() {
 		return (
-			<form className="ufc-form" onSubmit={this.handleFormSubmit}>
-				<div className="ufc-form__fighter">
-					<input id="alex" name="fighter" type="radio" value="alex" checked={this.state.selectedOption === 'alex'}  onChange={this.handleOptionChange} />
-					<label htmlFor="alex" className="ufc-form__fighter-label">
-						Alexander Gustafsson
-					</label>
-				</div>
-				<div className="ufc-form__fighter">
-					<input id="jon" name="fighter" type="radio" value="jon" checked={this.state.selectedOption === 'jon'}  onChange={this.handleOptionChange} />
-					<label htmlFor="jon" className="ufc-form__fighter-label">
-						Jon Jones
-					</label>
-				</div>
-				<button disabled={!this.state.selectedOption} type="submit" className="ufc-form__save">
-					Save
-				</button>
-			</form>
+			<div className="">
+				<Fighters handleFighterPick={this.handleFighterPick} fighters={this.fighters} />
+			</div>
 		);
 	}
 }

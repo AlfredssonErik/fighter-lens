@@ -54,3 +54,36 @@
 .ufc-form__fighter input[type="radio"]:checked ~ .ufc-form__fighter-label {
 	background-color: #93c59d;
 }
+
+
+/* Picker */
+
+.picker {
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: row;
+	margin: 0 -10px;
+}
+
+.picker__item {
+	width: 150px;
+	height: 150px;
+	padding: 10px;
+}
+
+.picker__content {
+	font-size: 18px;
+	text-align: center;
+	height: 100%;
+	color: #f9f9f9;
+	background-color: #7f8c8d;
+	border-radius: 3px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.picker__content:hover {
+	cursor: pointer;
+	background-color: #899394;
+}

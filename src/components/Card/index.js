@@ -16,7 +16,7 @@ class Card extends Component {
 		if (this.props.fighter === null || this.props.fighter === undefined) {
 			return (
 				<div className="card card--empty" onClick={this.onSelectFighter}>
-					<span className="card__add">Pick your data</span>
+					<span className="card__add">Pick a fighter</span>
 				</div>
 			);
 		} else {
