@@ -27,10 +27,18 @@
 	background: #f0f0f0
 }
 
+.modal__content {
+	padding: 20px;
+}
+
+.modal__actions {
+	margin: 40px 0;
+}
+
 .modal__title {
 	color: #444;
 	text-align: center;
-	margin: 10px 0;
+	margin: 0;
 }
 
 .modal__save {
