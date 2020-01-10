@@ -23,7 +23,7 @@ const Fighters = (props) => {
 		<Fragment>
 			<h2 className="modal__title">Pick a fighter</h2>
 			<div className="picker">
-				<button class="modal__btn-back" onClick={props.handleBackClick}>Back to divisions</button>
+				<button className="modal__btn-back" onClick={props.handleBackClick}>Back to divisions</button>
 				{props.fighters && props.fighters.map(item => 
 					<div key={item.name} className="picker__item">
 						<div className="picker__content" onClick={props.handleFighterPick.bind(null, item.link)}>

@@ -34,10 +34,6 @@
 	padding: 20px;
 }
 
-.modal__actions {
-	margin: 40px 0;
-}
-
 .modal__btn-back {
 	position: absolute;
 	top: 30px;
