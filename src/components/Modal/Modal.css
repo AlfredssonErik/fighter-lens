@@ -22,6 +22,7 @@
 
 .modal__modal {
 	min-width: 900px;
+	max-width: 920px;
 	min-height: 700px;
 	z-index: 2;
 	background: #f0f0f0;

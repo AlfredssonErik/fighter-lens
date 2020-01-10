@@ -114,6 +114,28 @@
 	font-weight: 500;
 }
 
+.card__bio {
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: row;
+	margin: 10px 0;
+}
+
+.card__bio-item {
+	font-size: 16px;
+	text-align: center;
+	border-top: 1px solid #e2e2e238;
+	width: 33%;
+	padding: 5px 0;
+}
+
+.card__bio-header {
+	color: #e2e2e2;
+	font-size: 14px;
+	font-weight: 400;
+	margin: 0;
+}
+
 .card__table {
 	padding-top: 3px;
 	border-top: 1px solid #e2e2e238;

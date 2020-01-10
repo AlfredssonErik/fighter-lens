@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import './Card.css';
 
 
-class Card extends Component {
+export default class Card extends Component {
 	constructor(props) {
 		super(props);
 		this.onSelectFighter = this.onSelectFighter.bind(this);
@@ -16,7 +16,7 @@ class Card extends Component {
 		if (this.props.fighter === null || this.props.fighter === undefined) {
 			return (
 				<div className="card card--empty" onClick={this.onSelectFighter}>
-					<span className="card__add">Pick a fighter</span>
+					<span className="card__add">Pick</span>
 				</div>
 			);
 		} else {
@@ -47,43 +47,20 @@ class Card extends Component {
 							)
 						}
 						</div>
-						<table className="card__table">
-							<thead>
-							<tr>
-								<th className="card__table-header">Age</th>
-								<th className="card__table-header">Height</th>
-								<th className="card__table-header">Weight</th>
-							</tr>
-							</thead>
-							<tbody>
-							<tr>
-								<td>{this.props.fighter.age}</td>
-								<td>{this.props.fighter.height}</td>
-								<td>{this.props.fighter.weight}</td>
-							</tr>
-							</tbody>
-						</table>
-						<table className="card__table">
-							<thead>
-							<tr>
-								<th className="card__table-header">Octagon debut</th>
-								<th className="card__table-header">Reach</th>
-								<th className="card__table-header">Leg reach</th>
-							</tr>
-							</thead>
-							<tbody>
-							<tr>
-								<td>{this.props.fighter.debut}</td>
-								<td>{this.props.fighter.reach}</td>
-								<td>{this.props.fighter.legReach}</td>
-							</tr>
-							</tbody>
-						</table>
+						<div className="card__bio">
+							{
+								this.props.fighter.bio.map((item, index) => 
+								<div key={index} className="card__bio-item">
+									<p className="card__bio-header">{item.text}</p>
+									<span>{item.figure}</span>
+								</div>
+								)
+							}
+						</div>
+
 					</div>
 				</Fragment>
 			);
 		}
 	}
 };
-
-export default Card;

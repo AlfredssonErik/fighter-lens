@@ -1,79 +1,5 @@
 import React, { Component, Fragment } from 'react';
 import './UFC.css';
-import fighterImage1 from './alexander-gustafsson.png';
-import fighterImage2 from './jon-jones.png';
-
-const alex = {
-	name: 'Alexander Gustafsson',
-	image: fighterImage1,
-	total: '18-5-0 (W-L-D)',
-	age: 32,
-	height: 77.00,
-	weight: 205.00,
-	debut: 'NOV. 14, 2009',
-	reach: 79.00,
-	legReach: 46.00,
-	record: [
-		{
-			figure: 11,
-			text: 'Wins by knockout'
-		},
-		{
-			figure: 3,
-			text: 'Wins by submission'
-		},
-		{
-			figure: 4,
-			text: 'Wins by submission'
-		}
-	],
-	stats: [
-		{
-			figure: '40%',
-			text: 'Striking accuracy'
-		},
-		{
-			figure: '40%',
-			text: 'Grappling accuracy'
-		}
-	]
-}
-
-const jon = {
-	name: 'Jon Jones',
-	image: fighterImage2,
-	total: '24-1-0 (W-L-D)',
-	age: 31,
-	height: 76.00,
-	weight: 205.00,
-	debut: 'AUG. 09, 2008',
-	reach: 84.50,
-	legReach: 45.00,
-	record: [
-		{
-			figure: 10,
-			text: 'Wins by knockout'
-		},
-		{
-			figure: 6,
-			text: 'Wins by submission'
-		},
-		{
-			figure: 9,
-			text: 'Title defences'
-		}
-	],
-	stats: [
-		{
-			figure: '58%',
-			text: 'Striking accuracy'
-		},
-		{
-			figure: '47%',
-			text: 'Grappling accuracy'
-		}
-	]
-}
 
 const Fighters = (props) => {
 	return (
@@ -95,23 +21,34 @@ const Fighters = (props) => {
 class UFC extends Component {
 	constructor(props) {
 		super(props);
-		this.fighters = [{id: 1,name: 'Alexander Gustafsson'},{id: 2,name: 'Jon Jones'}];
+		this.fighters = [
+			{id: 'jon-jones',name: 'Jon Jones'},
+			{id: 'daniel-cormier',name: 'Daniel Cormier'},
+			{id: 'alexander-gustafsson',name: 'Alexander Gustafsson'},
+			{id: 'thiago-santos',name: 'Thiago Santos'},
+			{id: 'anthony-smith',name: 'Anthony Smith'},
+			{id: 'dominick-reyes',name: 'Dominick Reyes'},
+			{id: 'corey-anderson',name: 'Corey Andersson'},
+			{id: 'jan-blachowicz',name: 'Jan Blachowicz'},
+			{id: 'volkan-oezdemir',name: 'Volkan Oezdemir'},
+			{id: 'glover-teixeira',name: 'Glover Teixeira'}
+		];
 		this.handleFighterPick = this.handleFighterPick.bind(this);
 	}
-	handleFighterPick(fighter) {
+
+	handleFighterPick(id) {
 		let fighterData;
-		switch (fighter) {
-			case 1:
-				fighterData = alex;
-				break;
-			case 2:
-				fighterData = jon;
-				break;
-			default:
-				break;
-		}
-		fighterData.position = this.props.activePosition;
-		this.props.onSave(fighterData);
+		fetch(`/fighter/${id}`)
+		.then((response) => {
+			if(!response.ok) throw Error(response.statusText)
+			return response.json();
+		})
+		.then((result) => {
+			fighterData = result;
+			fighterData.position = this.props.activePosition;
+			this.props.onSave(fighterData);
+		})
+		.catch(err => console.log(err))
 	}
 
 	render() {
