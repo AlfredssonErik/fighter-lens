@@ -21,6 +21,7 @@
 }
 
 .modal__modal {
+	position: relative;
 	min-width: 900px;
 	max-width: 920px;
 	min-height: 700px;
@@ -35,6 +36,26 @@
 
 .modal__actions {
 	margin: 40px 0;
+}
+
+.modal__btn-back {
+	position: absolute;
+	top: 30px;
+	left: 20px;
+	border: 0;
+	background: transparent;
+	font-size: 15px;
+	color: #444;
+	font-weight: 600;
+}
+
+.modal__btn-back:hover {
+	cursor: pointer;
+	color: #444;
+}
+
+.modal__btn-back:focus {
+	outline: 0;
 }
 
 .modal__title {

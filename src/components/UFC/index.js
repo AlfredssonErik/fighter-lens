@@ -23,6 +23,7 @@ const Fighters = (props) => {
 		<Fragment>
 			<h2 className="modal__title">Pick a fighter</h2>
 			<div className="picker">
+				<button class="modal__btn-back" onClick={props.handleBackClick}>Back to divisions</button>
 				{props.fighters && props.fighters.map(item => 
 					<div key={item.name} className="picker__item">
 						<div className="picker__content" onClick={props.handleFighterPick.bind(null, item.link)}>
@@ -42,6 +43,7 @@ class UFC extends Component {
 			divisions: undefined,
 			selectedDivision: undefined
 		};
+		this.handleBackClick = this.handleBackClick.bind(this);
 		this.handleDivisionPick = this.handleDivisionPick.bind(this);
 		this.handleFighterPick = this.handleFighterPick.bind(this);
 	}
@@ -58,6 +60,12 @@ class UFC extends Component {
 			})
 		})
 		.catch(err => console.log(err))
+	}
+
+	handleBackClick() {
+		this.setState({
+			selectedDivision: undefined
+		});
 	}
 
 	handleDivisionPick(division) {
@@ -94,7 +102,7 @@ class UFC extends Component {
 			selector = <Divisions handleDivisionPick={this.handleDivisionPick} divisions={this.state.divisions} />
 		} else {
 			const fighters = this.state.divisions[this.state.selectedDivision].fighters;
-			selector = <Fighters handleFighterPick={this.handleFighterPick} fighters={fighters} />;
+			selector = <Fighters handleBackClick={this.handleBackClick} handleFighterPick={this.handleFighterPick} fighters={fighters} />;
 		}
 		return (
 			<div className="">
