@@ -22,32 +22,64 @@
 
 .modal__modal {
 	position: relative;
-	min-width: 900px;
-	max-width: 920px;
+	width: 920px;
 	min-height: 700px;
+	max-height: 100%;
 	z-index: 2;
 	background: #f0f0f0;
 	border-radius: 3px;
+	animation-name: modalShow;
+	animation-duration: 0.15s;
+	overflow-y: auto;
 }
 
 .modal__content {
 	padding: 20px;
 }
 
-.modal__btn-back {
+.modal__btn-close {
 	position: absolute;
-	top: 30px;
-	left: 20px;
+	top: 10px;
+	right: 10px;
+	width: 30px;
+	height: 30px;
+	padding: 5px;
 	border: 0;
 	background: transparent;
-	font-size: 15px;
-	color: #444;
-	font-weight: 600;
+}
+
+.modal__btn-close:hover {
+	cursor: pointer;
+}
+
+.modal__btn-close:focus {
+	outline: 0;
+}
+
+.modal__btn-back {
+	position: absolute;
+	top: 45px;
+	left: 12px;
+	display: flex;
+	align-items: center;
+	font-size: 16px;
+	font-weight: var(--font-weight-bold);
+	border: 0;
+	background: transparent;
+	color: var(--color-ash);
+}
+
+.modal__btn-icon {
+	position: relative;
+	display: inline-block;
+	width: 15px;
+	height: 15px;
+	margin-right: 3px;
 }
 
 .modal__btn-back:hover {
 	cursor: pointer;
-	color: #444;
+	color: var(--color-ash);
 }
 
 .modal__btn-back:focus {
@@ -55,7 +87,18 @@
 }
 
 .modal__title {
-	color: #444;
+	font-size: 32px;
+	color: var(--color-ash);
 	text-align: center;
 	margin: 0 0 20px;
+}
+
+@keyframes modalShow {
+	0% {
+		opacity: 0;
+		transform: scale(0.8);
+	}
+	25% {
+		opacity: 1;
+	}
 }

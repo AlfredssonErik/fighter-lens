@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Card from '../Card';
 import Modal from '../Modal';
-import UFC from '../UFC';
+import Picker from '../Picker';
 
 class App extends Component {
 	constructor() {
@@ -47,7 +47,7 @@ class App extends Component {
 					<Card onSelect={this.toggleModal} fighter={this.state.fighter2} position={2} />
 				</div>
 				<Modal onClose={this.toggleModal} show={this.state.modalShow} >
-					<UFC onSave={this.handleSave} activePosition={this.state.activePosition} />
+					<Picker onSave={this.handleSave} activePosition={this.state.activePosition} />
 				</Modal>
 			</div>
 		);

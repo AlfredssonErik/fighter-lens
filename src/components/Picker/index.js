@@ -1,5 +1,7 @@
 import React, { Component, Fragment } from 'react';
-import './UFC.css';
+import LoadingAnimation from '../Utilities/Loading';
+import { ReactComponent as Back } from '../../icons/back.svg';
+import './Picker.css';
 
 const Divisions = (props) => {
 	return (
@@ -22,24 +24,37 @@ const Fighters = (props) => {
 	return (
 		<Fragment>
 			<h2 className="modal__title">Pick a fighter</h2>
-			<div className="picker">
-				<button className="modal__btn-back" onClick={props.handleBackClick}>Back to divisions</button>
-				{props.fighters && props.fighters.map(item => 
-					<div key={item.name} className="picker__item">
-						<div className="picker__content" onClick={props.handleFighterPick.bind(null, item.link)}>
-							<span>{item.name}</span>
+			<div className="picker picker--fighter">
+				<button className="modal__btn-back" onClick={props.handleBackClick}>
+					<span className="modal__btn-icon"><Back /></span> Back to divisions
+				</button>
+				{props.fighters && props.fighters.map((item, i) => {
+					let rank, c;
+					if (i === 0) {
+						c = true;
+						rank = 'C';
+					} else {
+						c = false;
+						rank = i;
+					}
+					return <div key={item.name} className="picker__fighter">
+						<div className="picker__fighter-inner" onClick={props.handleFighterPick.bind(null, item.link)}>
+							<div><span className={c ? 'picker__champ' : 'picker__rank'}>{rank}.</span> {item.name}</div>
 						</div>
 					</div>
+				}
+
 				)}
 			</div>
 		</Fragment>
 	);
 };
 
-class UFC extends Component {
+class Picker extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
+			loading: true,
 			divisions: undefined,
 			selectedDivision: undefined
 		};
@@ -56,6 +71,7 @@ class UFC extends Component {
 		})
 		.then((result) => {
 			this.setState({
+				loading: false,
 				divisions: result
 			})
 		})
@@ -79,6 +95,9 @@ class UFC extends Component {
 
 	handleFighterPick(link) {
 		let fighterData;
+		this.setState({
+			loading: true
+		});
 		fetch(link)
 		.then((response) => {
 			if(!response.ok) throw Error(response.statusText)
@@ -88,6 +107,7 @@ class UFC extends Component {
 			fighterData = result;
 			fighterData.position = this.props.activePosition;
 			this.setState({
+				loading: false,
 				selectedDivision: undefined
 			});
 			this.props.onSave(fighterData);
@@ -96,7 +116,7 @@ class UFC extends Component {
 	}
 
 	render() {
-		const { selectedDivision } = this.state;
+		const { selectedDivision, loading } = this.state;
 		let selector;
 		if (selectedDivision === undefined) {
 			selector = <Divisions handleDivisionPick={this.handleDivisionPick} divisions={this.state.divisions} />
@@ -107,9 +127,10 @@ class UFC extends Component {
 		return (
 			<div className="">
 				{selector}			
+				<LoadingAnimation visible={loading} />
 			</div>
 		);
 	}
 }
 
-export default UFC;
+export default Picker;

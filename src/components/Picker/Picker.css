@@ -1,0 +1,61 @@
+.picker {
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: row;
+	margin: 0 -10px;
+}
+
+.picker--fighter {
+	flex-direction: column;
+	margin: 0;
+}
+
+.picker__item {
+	width: 20%;
+	height: 150px;
+	padding: 10px;
+}
+
+.picker__content {
+	font-size: 18px;
+	font-weight: var(--font-weight-bold);
+	text-align: center;
+	height: 100%;
+	color: var(--color-ivory);
+	background-color: #485563;
+	border-radius: 3px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.picker__content:hover {
+	cursor: pointer;
+	background-color: #4f5d6b;
+}
+
+.picker__fighter {
+	display: block;
+	font-size: 20px;
+	font-weight: var(--font-weight-light);
+	color: var(--color-ash);
+	background-color: #eaeaea;
+	margin: 0 0 5px;
+	padding: 5px 15px;
+	transition: background-color .1s ease-in-out;
+}
+
+.picker__fighter:hover {
+	cursor: pointer;
+	background-color: #dadada;
+}
+
+.picker__champ {
+	color: rgb(218,165,32);
+	text-shadow: 0px 0px 1px #b5b5b5;
+	font-weight: var(--font-weight-bold);
+}
+
+.picker__rank {
+	font-weight: var(--font-weight-bold);
+}
