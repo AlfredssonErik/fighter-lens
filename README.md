@@ -1,6 +1,6 @@
 This is an app that allows the user to compare UFC fighters, complete with biography, stats and history. 
 
-![image1](https://github.com/AlfredssonErik/ufc-fighter-lens/image1.png) ![image2](https://github.com/AlfredssonErik/ufc-fighter-lens/image2.png)
+![image1](/image1.png) ![image2](/image2.png)
 
 For this to work we need to access UFC fighter data. This is done with the scraper that can be found on [https://github.com/AlfredssonErik/ufc-scraper](https://github.com/AlfredssonErik/ufc-scraper). The server runs on port 4000 and the ufc-fighter-lens is already using a proxy set up for development on this port.
 
