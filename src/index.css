@@ -2,11 +2,12 @@
 
 :root {
 	--font-weight-light: 300;
-	--font-weight-reqular: 400;
+	--font-weight-regular: 400;
 	--font-weight-bold: 500;
 
 	--color-ash: #444;
 	--color-ivory: #F9F9F9;
+	--color-green: rgb(32, 210, 10);
 	--color-red: rgb(210, 10, 10);
 }
 
@@ -22,7 +23,7 @@ body {
   height: 100%;
   margin: 0;
   font-family: 'Oswald', sans-serif;
-  font-weight: var(--font-weight-reqular);
+  font-weight: var(--font-weight-regular);
   /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif; */

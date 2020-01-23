@@ -40,43 +40,81 @@ export default class Card extends Component {
 					<div className={`card ${this.state.isFlipped ? 'card--fliped' : ''}`}>
 						<div className="card__inner">
 							<div className="card__front">
-								<button className="card__flip" onClick={this.handleFlip}>View history</button>
-								<button className="card__edit" onClick={this.onSelectFighter}>Switch</button>
-								<h2 className="card__name">{this.props.fighter.name}</h2>
-								<p className="card__total">{this.props.fighter.total}</p>
-								<div className="card__record">
+								<div className="card__controls">
+									<button className="card__flip" onClick={this.handleFlip}>View history</button>
+									<button className="card__edit" onClick={this.onSelectFighter}>Switch fighter</button>
+								</div>
+								<div className="card__content">
+									<h2 className="card__name">{this.props.fighter.name}</h2>
+									<p className="card__total">{this.props.fighter.total}</p>
+									<div className="card__record">
+										{
+											this.props.fighter.record.map((item, index) => 
+											<div key={index}>
+												<span className="card__record-stat">{item.figure}</span><br />
+												<span>{item.text}</span>
+											</div>
+											)
+										}
+									</div>
+									<div className="card__stats">
 									{
-										this.props.fighter.record.map((item, index) => 
+										this.props.fighter.stats.map((item, index) => 
 										<div key={index}>
-											<span className="card__record-stat">{item.figure}</span><br />
+											<span className="card__accuracy">{item.figure}</span><br />
 											<span>{item.text}</span>
 										</div>
 										)
 									}
-								</div>
-								<div className="card__stats">
-								{
-									this.props.fighter.stats.map((item, index) => 
-									<div key={index}>
-										<span className="card__accuracy">{item.figure}</span><br />
-										<span>{item.text}</span>
 									</div>
-									)
-								}
-								</div>
-								<div className="card__bio">
-									{
-										this.props.fighter.bio.map((item, index) => 
-										<div key={index} className="card__bio-item">
-											<p className="card__bio-header">{item.text}</p>
-											<span>{item.figure}</span>
-										</div>
-										)
-									}
+									<div className="card__bio">
+										{
+											this.props.fighter.bio.map((item, index) => 
+											<div key={index} className="card__bio-item">
+												<p className="card__bio-header">{item.text}</p>
+												<span>{item.figure}</span>
+											</div>
+											)
+										}
+									</div>
 								</div>
 							</div>
 							<div className="card__back">
-								<button className="card__flip" onClick={this.handleFlip}>View stats</button>
+								<div className="card__controls">
+									<button className="card__flip" onClick={this.handleFlip}>View stats</button>
+									<button className="card__edit" onClick={this.onSelectFighter}>Switch fighter</button>
+								</div>
+								<div className="card__content">
+									<ul className="card__history">
+									{
+										this.props.fighter.history.map((item, index) =>
+										<li key={index} className={`card__event ${item.win ? 'card__event--win' : 'card__event--loss'}`}>
+											<div className="card__event-description">
+												<span className="card__event-no">{item.event}</span>
+												<h2 className="card__event-name">{item.name}</h2>
+												<span className="card__event-date">{item.date}</span>
+											</div>
+											<div className="card__event-details">
+												<div className="card__event-detail">
+													<p className="card__event-header">Result</p>
+													<span>
+														{`${item.win ? 'Win' : 'Loss'}`}
+													</span>
+												</div>
+												{
+													item.stats.map((item, index) => 
+													<div key={index} className="card__event-detail">
+														<p className="card__event-header">{item.label}</p>
+														<span>{item.text}</span>
+													</div>
+													)
+												}
+											</div>
+										</li>
+										)
+									}
+									</ul>
+								</div>
 							</div>
 						</div>
 					</div>
