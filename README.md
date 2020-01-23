@@ -1,4 +1,5 @@
 Should be paired with server for scraping official UFC data. <br>
+
 Get the scraper from [https://github.com/AlfredssonErik/ufc-scraper](https://github.com/AlfredssonErik/ufc-scraper). Just run the server and the ufc-fighter-lens uses a proxy for the port the server is running on(port 4000).
 
 ## Available Scripts
