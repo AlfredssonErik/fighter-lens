@@ -41,7 +41,8 @@ export default class Card extends Component {
 						<div className="card__inner">
 							<div className="card__front">
 								<div className="card__controls">
-									<button className="card__flip" onClick={this.handleFlip}>View history</button>
+									<button className="card__flip" onClick={this.handleFlip}>History</button>
+									<span className="card__info">Biography</span>
 									<button className="card__edit" onClick={this.onSelectFighter}>Switch fighter</button>
 								</div>
 								<div className="card__content">
@@ -81,7 +82,8 @@ export default class Card extends Component {
 							</div>
 							<div className="card__back">
 								<div className="card__controls">
-									<button className="card__flip" onClick={this.handleFlip}>View stats</button>
+									<button className="card__flip" onClick={this.handleFlip}>Stats</button>
+									<span className="card__info">{this.props.fighter.name}'s history</span>
 									<button className="card__edit" onClick={this.onSelectFighter}>Switch fighter</button>
 								</div>
 								<div className="card__content">

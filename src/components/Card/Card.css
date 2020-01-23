@@ -1,6 +1,6 @@
 .card {
 	position: relative;
-	height: 470px;
+	height: 460px;
 	width: 50%;
 	background-color: transparent;
 	margin: 0 20px;
@@ -59,11 +59,19 @@
 	flex-direction: row-reverse;
 }
 
+.card__info {
+	display: flex;
+	align-items: center;
+	font-size: 17px;
+	font-weight: var(--font-weight-regular);
+}
+
 .card__content {
 	padding: 0 20px 40px;
 }
 
 .card__edit, .card__flip {
+	width: 100px;
 	color: var(--color-ivory);
 	font-weight: 500;
 	background: #d8d8d814;
@@ -172,11 +180,10 @@
 }
 
 .card__event {
-	margin: 0 0 15px;
+	margin: 0 0 10px;
 	padding: 10px;
 	border-radius: 2px;
-	background: rgba(183, 183, 183, 0.22);
-	box-shadow: 0px 3px 10px -4px rgba(0,0,0,0.2)
+	background: rgba(255, 255, 255, 0.03);
 }
 
 .card__event--win {
