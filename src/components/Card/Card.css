@@ -71,13 +71,13 @@
 }
 
 .card__edit, .card__flip {
-	width: 100px;
+	width: 92px;
 	color: var(--color-ivory);
 	font-weight: 500;
 	background: #d8d8d814;
 	border: none;
 	border-radius: 2px;
-	padding: 10px;
+	padding: 8px 0;
 }
 
 .card__edit:hover, .card__flip:hover {
