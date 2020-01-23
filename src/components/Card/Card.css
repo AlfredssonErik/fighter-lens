@@ -1,45 +1,80 @@
 .card {
 	position: relative;
-	color: var(--color-ivory);
-	font-weight: 500;
+	height: 470px;
 	width: 50%;
-	min-height: 160px;
-	background: rgba(187, 187, 187, 0.25);
+	background-color: transparent;
 	margin: 0 20px;
-	padding: 10px 20px 40px;
-	border-radius: 2px;
-	box-shadow: 0 4px 20px -4px rgba(0,0,0,0.2);
-	transition: background ease-in-out .15s;
+	perspective: 1000px;
 }
 
-.card__edit {
-	position: absolute;
-	top: 0;
-	right: 0;
-	color: var(--color-ivory);
-	font-weight: 500;
-	background: transparent;
-	border: none;
-	border-radius: 2px;
-	padding: 10px;
+.card--empty {
+	height: 160px;
 }
 
-.card__edit:hover {
-	cursor: pointer;
-	background: rgba(187, 187, 187, 0.35);
-}
-
-.card.card--empty {
+.card.card--empty .card__inner {
 	min-width: 120px;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 }
 
-.card.card--empty:hover {
+.card.card--empty .card__inner:hover {
 	cursor: pointer;
 	background: rgba(187, 187, 187, 0.35);
 	box-shadow: 0 4px 20px 0px rgba(0,0,0,0.2);
+}
+
+.card--fliped .card__inner {
+	transform: rotateY(180deg);
+}
+
+.card__inner {
+	width: 100%;
+	height: 100%;
+	color: var(--color-ivory);
+	font-weight: 500;
+	background: rgba(187, 187, 187, 0.25);
+	border-radius: 2px;
+	box-shadow: 0 4px 20px -4px rgba(0,0,0,0.2);
+	transition: background ease-in-out .15s, transform 0.8s;
+	transform-style: preserve-3d;
+}
+
+.card__front, .card__back {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	backface-visibility: hidden;
+}
+
+.card__back {
+	transform: rotateY(180deg);
+}
+
+.card__controls {
+	display: flex;
+	justify-content: space-between;
+	flex-direction: row-reverse;
+}
+
+.card__content {
+	padding: 0 20px 40px;
+}
+
+.card__edit, .card__flip {
+	color: var(--color-ivory);
+	font-weight: 500;
+	background: #d8d8d814;
+	border: none;
+	border-radius: 2px;
+	padding: 10px;
+}
+
+.card__edit:hover, .card__flip:hover {
+	cursor: pointer;
+	background: rgba(187, 187, 187, 0.35);
 }
 
 .card__add {
@@ -48,7 +83,7 @@
 
 /* Fighter Card */
 .fighter__image {
-	/* display: none; */
+	display: none;
 	position: absolute;
 	max-width: 400px;
 	bottom: 0;
@@ -128,21 +163,81 @@
 	margin: 0;
 }
 
-.card__table {
-	padding-top: 3px;
-	border-top: 1px solid #e2e2e238;
-	width: 100%;
-	margin: 10px 0;
+/* History */
+
+.card__history {
+	margin: 10px -10px;
+	padding: 0;
+	list-style-type: none;
+}
+
+.card__event {
+	margin: 0 0 15px;
+	padding: 10px;
+	border-radius: 2px;
+	background: rgba(183, 183, 183, 0.22);
+	box-shadow: 0px 3px 10px -4px rgba(0,0,0,0.2)
+}
+
+.card__event--win {
+	border-left: 3px solid var(--color-green);
+}
+
+.card__event--loss {
+	border-left: 3px solid var(--color-red);
+}
+
+.card__event + .card__event {
+	margin-top: 5px;
+}
+
+.card__event-description {
+	display: flex;
+	justify-content: space-between;
+	align-items: baseline;
+	font-weight: var(--font-weight-light);
+}
+
+.card__event-no {
+	font-weight: var(--font-weight-regular);
+	color: #e2e2e2;
+}
+
+.card__event-name {
+	font-weight: var(--font-weight-light);
+	text-align: center;
+	margin: 0 0 5px;
+}
+
+.card__event-date {
+	font-size: 14px;
+	color: #e2e2e2;
+}
+
+.card__event-details {
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: row;
+	justify-content: space-between;
+	margin: 0;
+}
+
+.card__event-detail {
 	font-size: 16px;
 	text-align: center;
+	padding: 8px 0;
 }
 
-.card__table th, .card__table td {
-	width: 33%;
+.card__event-detail:first-child {
+	text-align: left;
+}
+.card__event-detail:last-child {
+	text-align: right;
 }
 
-.card__table-header {
+.card__event-header {
 	color: #e2e2e2;
 	font-size: 14px;
 	font-weight: 400;
+	margin: 0;
 }
