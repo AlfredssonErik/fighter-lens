@@ -1,8 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import './Card.css';
 
-// https://www.w3schools.com/howto/howto_css_flip_card.asp
-
 export default class Card extends Component {
 	constructor(props) {
 		super(props);
