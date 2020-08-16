@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import urlUtils from '../Utilities/url/config';
 import LoadingAnimation from '../Utilities/Loading';
 import { ReactComponent as Back } from '../../icons/back.svg';
 import './Picker.css';
@@ -64,7 +65,7 @@ class Picker extends Component {
 	}
 
 	componentDidMount() {
-		fetch('https://stat-c-scraper.herokuapp.com/rankings')
+		fetch(`${urlUtils.baseUrl}/rankings`)
 		.then((response) => {
 			if(!response.ok) throw Error(response.statusText)
 			return response.json();
@@ -98,7 +99,7 @@ class Picker extends Component {
 		this.setState({
 			loading: true
 		});
-		fetch(link)
+		fetch(`${urlUtils.baseUrl}${link}`)
 		.then((response) => {
 			if(!response.ok) throw Error(response.statusText)
 			return response.json();
