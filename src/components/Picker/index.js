@@ -64,7 +64,7 @@ class Picker extends Component {
 	}
 
 	componentDidMount() {
-		fetch('/rankings')
+		fetch('https://stat-c-scraper.herokuapp.com/rankings')
 		.then((response) => {
 			if(!response.ok) throw Error(response.statusText)
 			return response.json();
